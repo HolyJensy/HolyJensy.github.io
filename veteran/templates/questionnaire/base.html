@@ -1,0 +1,61 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>СНТ "Ветеран"</title>
+        <link rel="stylesheet" href="{% static '/css/main.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+    <div class="main">
+      <span style="font-size:20px; cursor:pointer" onclick="openNav()">☰ Меню</span>
+    </div>
+
+    <img class="logo" src="{% static 'img/СНТ.png' %}" alt="СНТ">
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="{% url 'veteran' %}">СНТ "Ветеран"</a>
+      <a href="{% url 'post_list' %}">Новости и объявления</a>
+      <a href="">Контакты</a>
+      <a href="">Документы</a>
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+
+
+    <script>
+    function openNav() {
+            document.getElementById("mySidenav").style.width = "100%";
+        // document.getElementById("mySidenav").style.maxWidth = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+        document.getElementById("main").style.visibility = "hidden";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft= "0";
+        document.getElementById("main").style.visibility = "visible";
+    }
+
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+        content.style.display = "none";
+    } else {
+        content.style.display = "block";
+    }
+    });
+    }
+    </script>
+
+
+    </body>
+</html>
